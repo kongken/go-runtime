@@ -1,0 +1,12 @@
+FROM alpine:3
+
+RUN apk update && apk upgrade && apk add ca-certificates && update-ca-certificates
+# Change TimeZone
+RUN apk add --update tzdata
+
+# Clean APK cache
+RUN rm -rf /var/cache/apk/*
+
+RUN mkdir -p /app/bin
+
+WORKDIR /app/bin
